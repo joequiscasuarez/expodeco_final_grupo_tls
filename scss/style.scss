@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700');
+$open-sans: 'Open Sans', sans-serif;
+$color-logo: #5dabb4;
+
+*{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.clearfix:after,
+.clearfix:before{
+	content: "";
+	display: table;
+	clear: both;	
+}
+
+html, body{
+	height: 100%;
+}
+
+body{
+	margin: 0;
+	font-family: $open-sans;
+}
+
+.container{
+	width: 90%;
+	max-width: 1200px;
+	margin: auto;
+}
+.video-container{
+	height: 550px;
+	position: relative;
+	overflow: hidden;
+	&:before{
+		content: '';
+	    position: absolute;
+	    left: 0px;
+	    top: 0px;
+	    width: 100%;
+	    height: 100%;
+	    background: rgba(0, 0, 0, 0.4);
+	    display: block;
+	    z-index: -10;
+	}
+	video{
+		// cubre toda la pantalla
+		min-width: 100%;
+		min-height: 100%;
+		
+		// para que el navegador no altera la escala
+		width: auto;
+		height: auto;
+		
+		//centrado
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		-webkit-transform: translate(-50%,-50%);
+		-moz-transform: translate(-50%,-50%);
+		-ms-transform: translate(-50%,-50%);
+		-o-transform: translate(-50%,-50%);
+		z-index: -20;
+	}
+}
+
+.row-container{
+	box-sizing: border-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    h1{
+    	font-size: 4.063em;
+    	margin: 0;
+    }
+    p{
+    	font-size: 1.250em;
+    	margin-top: 5px;
+    }
+    h1,p{
+    	text-align: center;
+    	color: #fff;
+    	font-weight: 600;
+    }
+}
+
+.full-height{
+	height: 100%;
+	z-index: 10;
+}
+
+.color-logo{
+	color: $color-logo;
+}
+
+header{
+	position:fixed;
+	width: 100%;
+	z-index: 100;
+	-webkit-transition: all ease .5s;
+	-moz-transition: all ease .5s;
+	transition: all ease .5s;
+	.nav{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		height: 80px;
+	}
+	.nav-menu ul{
+		display: flex;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		margin-left: 20px;
+	}
+	.nav-menu ul ul{
+		display: none;
+	}
+	.nav-menu a{
+		display: block;
+		text-decoration: none;
+		color: #fff;
+		text-transform: uppercase;
+		font-weight: 600;
+		-webkit-transition: all ease .5s;
+		-moz-transition: all ease .5s;
+		transition: all ease .5s;
+		&:hover{
+			color: #5dabb4;
+		}
+		i{
+			margin-left: 5px;
+		}
+	}
+	.nav-menu ul li:hover ul{
+		display: block;
+		position: absolute;
+		background: #5dabb4;
+		padding: 5px 15px;
+		color: #fff;
+		text-align: center;
+	}
+}
+
+.sepa{
+	margin-left: 20px;
+}
+.menu-fixed{
+	background: black;
+}
+
+.menu-bar {
+  width: 40px;
+  cursor: pointer;
+  display: none;
+}
+
+.uno, .dos, .tres {
+  width: 100%;
+  background: white;
+  height: 3px;
+  transition: all 0.5s;
+}
+.dos {
+  margin: 5px 0;
+}
+
+/*animacion*/
+
+.mostrar  .uno {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mostrar .dos {
+  opacity: 0;
+}
+
+.mostrar .tres {
+  transform: rotate(-45deg) translate(6px, -7px);
+
+}
+
+.mostrar .menu{
+  visibility: visible;
+  opacity: 1;
+}
+
+.redes-header{
+	display:none;
+	position:fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 20px;
+	.circle-header{
+		opacity: 1;
+		display: inline-block;
+		width: 50px;
+		height: 50px;
+		line-height: 50px;
+		border-radius: 50%;
+		background: #fff;
+		margin: 0 10px;
+		color: #42919a;
+		font-size: 20px;
+	}
+}
+@media screen and (max-width: 992px){
+	header{
+		.nav-menu{
+			display: none;
+		}
+		.nav-menu.visible{
+			display: block;
+			position: fixed;
+		    top: 0;
+		    text-align: center;
+		    left: 0;
+		    width: 100%;
+		    background: #000;
+		    height: 100vh;
+		    z-index: -50;
+			ul{
+				flex-direction: column;
+			    position: relative;
+			    top: 80px;
+			    margin-left: 0;
+			}
+			ul li{
+				line-height: 50px;
+			}
+		}
+		.nav-menu ul li:hover ul{
+			display: none;
+			position: static;
+			padding: 0;
+			background: rgba(0,0,0,0);
+		}
+		.nav-menu a{
+			color: #fff;
+			transition: none;
+			&:hover{
+				color: none;
+			}
+		}
+		.sepa{
+			margin-left: 0;
+		}
+	}
+	.menu-bar {
+		display: block;
+	}
+
+	.redes-header.visible{
+		display: block;
+	}
+}
+
+@media screen and (max-width: 400px){
+	.row-container{
+	    h1{
+	    	font-size: 3.5em;
+	    }
+	}
+}
